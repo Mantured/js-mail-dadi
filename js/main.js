@@ -30,12 +30,24 @@ const mailUser = document.getElementById('input-mail-user').value;
 console.log(mailUser);
 
 
-for (let i = 0; i < dataSetMails.length; i++) {
-    if (dataSetMails[i] == mailUser) {
-        console.log(`corretto`);
-    } else {
-        console.log(`dannazione`);
-    }
+/* var x = new Boolean(false);
+if (x) {
+    this code is executed
+} */
+
+/* var x = Boolean(expression);     // use this...
+var x = !!(expression);          // ...or this
+var x = new Boolean(expression); // don't use this! */
+
+
+let check =(false);
+
+//sostanzialmente sta entrando nel ciclo perchè i = 0 ed esce praticamente subito perchè i<1, nel frattempo ha fatto un controllo 
+// posso anche usare .length così sto sereno che non si rompi nulla
+
+for (let i = 0; i < dataSetMails.length; i++) {                       
+    if (dataSetMails[i] == mailUser) check = true; 
 }
+console.log(check); //!FUNZIONA!
 
 
