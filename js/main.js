@@ -1,22 +1,3 @@
-/* Chiedi all’utente la sua email,
-controlla che sia nella lista di chi può accedere,
-stampa un messaggio appropriato sull’esito del controllo.
-Note: il controllo vorrei che fosse effettuato manualmente con un ciclo for e non usando funzionalità built-in degli array in js :)
-Gioco dei dadi
-Generare un numero random da 1 a 6, sia per il giocatore sia per il computer.
-Stabilire il vincitore, in base a chi fa il punteggio più alto.
-Consigli generali
-Prima di partire a scrivere codice poniamoci qualche domanda: Che ci sia un array da qualche parte? Se dobbiamo confrontare qualcosa che "cosa" ci serve?
-Consigli del giorno:
-scriviamo sempre prima dei commenti in italiano per capire cosa vogliamo fare
-javascript non fa nulla da solo, dobbiamo dirgli noi cosa vogliamo fare attraverso le nostre istruzioni
-si, ma noi cosa vogliamo fare?
-torniamo a scrivere in italiano
-proviamo ad immaginare le operazioni che vogliamo far svolgere al nostro programma così come lo faremmo "a mano"
-usiamo i diagrammini e i discorsi filosofici di oggi come base per costruire un nostro sistema di implementazione autonomo */
-
-
-//#creo una variabile che mi prende solo l'id, dopo andrò a prenderla per value con mailUser.value
 
 const dataSetMails = [
     'gianni.gianni@gmail.com',
@@ -28,6 +9,16 @@ console.log(dataSetMails);
 
 const mailUser = document.getElementById('input-mail-user').value;
 console.log(mailUser);
+
+//#voglio definire un i = 0, quindi entra nel ciclo valido per tutte le volte che i < 1, aumenta l'i non è più minore di 1 esco dal cilco
+
+/* for (let i = 0; i < 1; i++) {
+    if (dataSetMails[i] == (mailUser)) {
+        console.log(`bravoh`);
+    } else {
+        console.log(`mona`);
+    }
+} */
 
 
 /* var x = new Boolean(false);
@@ -55,8 +46,8 @@ function checkMyMail() {
 
     let outcome = document.getElementById('check-outcome');
 
-    //# attenzione! non riassegnare check ! QUINDI NO IF (CHECK = TRUE) IN QUESTO CASO NON STO CONTROLLANDO MA RIASSEGNANDO
-    if (check) {
+    //# attenzione! non riassegnare check ! QUINDI NO IF (CHECK = TRUE) IN QUESTO CASO NON STO CONTROLLANDO MA RIASSEGNANDO AL MASSIMO CHECK == TRUE
+    if (check) { // check == true;
         /* let outcome = document.getElementById('check-outcome'); */
         outcome.innerHTML = `Welcome`;
     } else {
@@ -66,5 +57,28 @@ function checkMyMail() {
     }
 }
 
+document.getElementById('my-btn-check').addEventListener(`click`, checkMyMail);
 
-document.querySelector('button').addEventListener(`click`, checkMyMail);
+function winOrDie() {
+    const userNumber = Math.floor(Math.random() * 6) + 1;
+    console.log(userNumber);
+    const pcNumber = Math.floor(Math.random() * 6) + 1;
+    console.log(pcNumber);
+    /* const diceNumber = Math.floor(Math.random() * 6) + 1;
+    console.log(diceNumber); */
+
+    //potrei creare una terza variabile per complicare le cose in cui inserisco il valore del dado da mettere a confronto con i due attori, ma alla fine è la stessa cosa
+
+    if (userNumber < pcNumber) {
+        document.getElementById('result').innerHTML = `Hai perso!`
+        console.log(`You Lose`);
+    } else if (userNumber > pcNumber) {
+        document.getElementById('result').innerHTML = `Hai vinto!`
+        console.log(`You Win bastardo fortunato`);
+    } else {
+        document.getElementById('result').innerHTML = `Pari. rigioca!`
+        console.log(`Patta`);
+    }
+}
+
+document.getElementById('roll').addEventListener(`click`, winOrDie);
