@@ -39,15 +39,32 @@ if (x) {
 var x = !!(expression);          // ...or this
 var x = new Boolean(expression); // don't use this! */
 
+function checkMyMail() {
 
-let check =(false);
+    let check =(false); //valore booleano variabile definita let
 
-//sostanzialmente sta entrando nel ciclo perchè i = 0 ed esce praticamente subito perchè i<1, nel frattempo ha fatto un controllo 
-// posso anche usare .length così sto sereno che non si rompi nulla
+    // sostanzialmente sta entrando nel ciclo perchè i = 0 ed esce praticamente subito perchè i<1, nel frattempo ha fatto un controllo 
+    // posso anche usare .length così sto sereno che non si rompi nulla
 
-for (let i = 0; i < dataSetMails.length; i++) {                       
-    if (dataSetMails[i] == mailUser) check = true; 
+    for (let i = 0; i < dataSetMails.length; i++) {                       
+        if (dataSetMails[i] == mailUser) check = true; 
+    }
+    console.log(check); //!FUNZIONA!
+
+    //assegno la variabile che poi vado a ripescarmi per l'inner posso crearla all'interno della condizione o anche fuori, meglio furi una volta sola
+
+    let outcome = document.getElementById('check-outcome');
+
+    //# attenzione! non riassegnare check ! QUINDI NO IF (CHECK = TRUE) IN QUESTO CASO NON STO CONTROLLANDO MA RIASSEGNANDO
+    if (check) {
+        /* let outcome = document.getElementById('check-outcome'); */
+        outcome.innerHTML = `Welcome`;
+    } else {
+    /*  let outcome = document.getElementById('check-outcome'); */
+        outcome.innerHTML = `GetOut`;
+        /* console.log(outcome); */
+    }
 }
-console.log(check); //!FUNZIONA!
 
 
+document.querySelector('button').addEventListener(`click`, checkMyMail);
